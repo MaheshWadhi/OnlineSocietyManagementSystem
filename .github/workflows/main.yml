@@ -1,0 +1,30 @@
+```yaml
+name: Build Java Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Give Maven Wrapper permission
+        working-directory: ./server
+        run: chmod +x mvnw
+
+      - name: Build JAR
+        working-directory: ./server
+        run: ./mvnw clean package -DskipTests
+```
