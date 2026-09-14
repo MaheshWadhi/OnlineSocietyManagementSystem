@@ -25,7 +25,7 @@ function MemberProfile() {
   const fetchProfileData = async () => {
     try {
       const token = localStorage.getItem("token"); // Assuming the token is stored after login
-      const response = await axios.get(`http://localhost:8082/my-profile`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/my-profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -71,7 +71,7 @@ function MemberProfile() {
         console.log("Token retrieved:", token);
         console.log("Profile data to be sent:", profileData);
         
-        const response = await axios.put(`http://localhost:8082/update-profile`, profileData, {
+        const response = await axios.put(`${import.meta.env.VITE_API_URL}/update-profile`, profileData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

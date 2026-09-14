@@ -15,7 +15,7 @@ function AdminComplaintsFeedbacks() {
 
   const fetchFeedbacks = async () => {
     try {
-      const response = await axios.get("http://localhost:8082/all-feedbacks", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-feedbacks`, {
         headers: {
           Authorization: `Bearer ${token}`,
         }, 
@@ -30,7 +30,7 @@ function AdminComplaintsFeedbacks() {
 
   const fetchComplaints = async () => {
     try {
-      const response = await axios.get("http://localhost:8082/all-complaints", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-complaints`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

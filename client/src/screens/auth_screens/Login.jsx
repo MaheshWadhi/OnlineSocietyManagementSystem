@@ -32,7 +32,7 @@ function Login() {
     // }
   
     try {
-      const response = await axios.post(`http://localhost:8082/auth/signin`, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signin`, {
         email,
         password,
       });

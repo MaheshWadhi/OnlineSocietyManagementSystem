@@ -18,7 +18,7 @@ function AdminNotices() {
 
   const fetchNotices = async () => {
     try {
-      const response = await axios.get(`http://localhost:8082/all-notices`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-notices`);
       setNotices(response.data);
     } catch (error) {
       console.error("Error fetching notices:", error);
@@ -39,7 +39,7 @@ function AdminNotices() {
     e.preventDefault();
     const token = localStorage.getItem("token");
     try {
-      await axios.post(`http://localhost:8082/add-notice`, newNotice, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/add-notice`, newNotice, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +57,7 @@ function AdminNotices() {
   const handleDelete = async (noticeId) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:8082/delete-notice/${noticeId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/delete-notice/${noticeId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

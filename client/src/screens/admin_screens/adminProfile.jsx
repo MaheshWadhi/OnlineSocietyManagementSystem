@@ -30,7 +30,7 @@ function AdminProfile() {
   const fetchProfileData = async () => {
     try {
       const token = localStorage.getItem("token"); // Assuming the token is stored after login
-      const response = await axios.get(`http://localhost:8082/my-profile`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/my-profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -59,7 +59,7 @@ function AdminProfile() {
   const handleAddGuard = async () => {
     try {
       const token = localStorage.getItem("token"); // Assuming the token is stored after login
-      await axios.post(`http://localhost:8082/add-guard`, guardData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/add-guard`, guardData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -86,7 +86,7 @@ function AdminProfile() {
     if (isEditing) {
       try {
         const token = localStorage.getItem("token"); // Assuming the token is stored after login
-        await axios.put(`http://localhost:8082/update-profile`, profileData, {
+        await axios.put(`${import.meta.env.VITE_API_URL}/update-profile`, profileData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

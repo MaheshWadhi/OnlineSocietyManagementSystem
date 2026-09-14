@@ -17,7 +17,7 @@ function AdminMaintenance() {
   const fetchPayments = async () => {
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.get(`http://localhost:8082/all-payments`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-payments`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -39,7 +39,7 @@ function AdminMaintenance() {
     const token = localStorage.getItem("token");
     const newPayment = { amount, paymentType, dueDate };
     try {
-      await axios.post(`http://localhost:8082/add-payment`, newPayment, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/add-payment`, newPayment, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

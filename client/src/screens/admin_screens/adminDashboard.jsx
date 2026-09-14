@@ -15,7 +15,7 @@ function AdminDashboard() {
 
   const fetchNotices = async () => {
     try {
-      const response = await axios.get("http://localhost:8082/all-notices");
+      const response = await axios.get('${import.meta.env.VITE_API_URL}/all-notices');
       const notices = response.data;
       
 
@@ -33,7 +33,7 @@ function AdminDashboard() {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get("http://localhost:8082/all-events");
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-events`);
       const events = response.data;
 
       
@@ -50,7 +50,7 @@ function AdminDashboard() {
 
   const fetchFeedbacks = async () => {
     try {
-      const response = await axios.get(`http://localhost:8082/all-feedbacks`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-feedbacks`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -71,7 +71,7 @@ function AdminDashboard() {
 
   const fetchComplaints = async () => {
     try {
-      const response = await axios.get(`http://localhost:8082/all-complaints`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-complaints`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -95,7 +95,7 @@ function AdminDashboard() {
   const fetchBookings = async () => {
     try {
       const token = localStorage.getItem("token"); // Assuming the token is stored after login
-      const response = await axios.get(`http://localhost:8082/all-bookings`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-bookings`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -108,7 +108,7 @@ function AdminDashboard() {
 
   const handleDeleteEvent = async (eventId) => {
     try {
-      await axios.delete(`http://localhost:8082/delete-event/${eventId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/delete-event/${eventId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Event Deleted Successfully");
@@ -122,7 +122,7 @@ function AdminDashboard() {
   const handleDeleteNotice = async (noticeId) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:8082/delete-notice/${noticeId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/delete-notice/${noticeId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -137,7 +137,7 @@ function AdminDashboard() {
 
   const fetchMembers = async () => {
     try {
-      const response = await axios.get(`http://localhost:8082/all-members`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/all-members`);
       setMembers(response.data);
       console.log(response.data);
     } catch (error) {
